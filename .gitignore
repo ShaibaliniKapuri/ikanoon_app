@@ -1,0 +1,6 @@
+# Ignore all .env files (commonly used for environment variables)
+.ikenv/
+completed/
+content/
+persist_dir/
+_pycache_/
