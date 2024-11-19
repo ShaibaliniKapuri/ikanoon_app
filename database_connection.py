@@ -7,9 +7,9 @@ persist_dir = "persist_dir"
 
 # Connect to PostgreSQL with Apache AGE
 conn = psycopg2.connect(
-    dbname="postgres",
-    user="shaiba",
-    password="Shaibathedog8#",
+    dbname="xxxx",
+    user="xxxx",
+    password="xxxx",
     host="localhost",
     port="5432"
 )
