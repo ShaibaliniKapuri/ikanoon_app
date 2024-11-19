@@ -7,7 +7,7 @@ from llama_index.core import SimpleDirectoryReader
 perform_search("Domestic Violence Cases in Kolkata")
 
 # Initialize the indexer
-api_key = "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"
+api_key = "abcd"
 indexer = KnowledgeGraphIndexer(api_key)
 
 # Load documents
