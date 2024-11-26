@@ -1,5 +1,3 @@
-Here’s a **README.md** file tailored to your project:  
-
 
 # Legal Chat Application
 
