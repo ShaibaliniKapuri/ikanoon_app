@@ -5,11 +5,13 @@ import psycopg2
 # Path to the persist storage directory
 persist_dir = "persist_dir"
 
+
+#The Database connection
 # Connect to PostgreSQL with Apache AGE
 conn = psycopg2.connect(
-    dbname="postgres",
-    user="shaiba",
-    password="Shaibathedog8#",
+    dbname="xxxx",
+    user="xxxx",
+    password="xxxx",
     host="localhost",
     port="5432"
 )
@@ -18,6 +20,8 @@ cur = conn.cursor()
 # Ensure AGE is loaded
 cur.execute("LOAD 'age';")
 cur.execute("SET search_path = ag_catalog, public;")
+
+#------------------------------------------------------------------------------------------------------------------------
 
 # Function to create a graph
 def create_graph(graph_name):
@@ -61,11 +65,11 @@ def push_json_to_age(persist_dir):
                 graph_name = root+"_"+file.split(".")[0]#os.path.splitext(json_file)[0]
 
                 # Check if the graph already exists
-                if graph_exists(graph_name):
-                    print(f"Graph '{graph_name}' already exists. Skipping creation and data insertion.")
-                    return  
-                else:
-                    create_graph(graph_name)
+                #if graph_exists(graph_name):
+                #    print(f"Graph '{graph_name}' already exists. Skipping creation and data insertion.")
+                #    return  
+                #else:
+                create_graph(graph_name)
 
                 # Insert data into the graph
                 insert_into_graph(graph_name, json_data)
@@ -109,6 +113,9 @@ def update_chat_log(user_id, search_query, new_entry):
     conn.commit()
     print(f"Chat log updated for user '{user_id}' and query '{search_query}'.")
 
+#--------------------------------------------------------------------------------------------------------------------------------------------
+
+# The graph_exists and query_graph functions are not used currrently
 
 def graph_exists(graph_name):
     #cur.execute(f"SELECT name FROM ag_graph WHERE name = '{graph_name}';")

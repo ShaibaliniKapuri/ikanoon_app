@@ -14,7 +14,7 @@ app = Flask(__name__)
 api = Api(app)
 
 # Initialize Knowledge Graph Indexer
-api_key = "groq_api_key"
+api_key = "xxxx"#groq_api_key
 indexer = KnowledgeGraphIndexer(api_key)
 source_dir = "content"
 index = None
@@ -77,12 +77,12 @@ class Search(Resource):
         graph_name = search_query.replace(" ", "_").lower()
 
         # Check if graph already exists
-        if graph_exists(graph_name):
-            print(f"Graph '{graph_name}' already exists. Reusing it.")
-        else:
+        #if graph_exists(graph_name):
+        #    print(f"Graph '{graph_name}' already exists. Reusing it.")
+        #else:
             # Perform the search query with the documents
-            perform_search(search_query)
-            rebuild_index()
+        perform_search(search_query)
+        rebuild_index()
 
         #save to chat history
         save_user_history(user_id, search_query, graph_name)
@@ -160,6 +160,9 @@ class Query(Resource):
         #return jsonify({"response": response})
 
 
+#-------------------------------------------------------------------------------------------------------------------
+
+#ChatHistory API was made to show the chat history of user with the application not in use currently
 class ChatHistory(Resource):
     def get(self):
         user_id = "1" #request.args.get("user_id")
@@ -179,6 +182,7 @@ class ChatHistory(Resource):
         return jsonify({"history": formatted_history})
 
 
+#The SearchHistory API is used to show the search History of the user in the frontend
 class SearchHistory(Resource):
     def get(self):
         user_id = "1" #request.args.get("user_id", "default_user")  # Replace with actual user ID handling
@@ -189,6 +193,9 @@ class SearchHistory(Resource):
 
         return {"history": [row[0] for row in results]}, 200
 
+#------------------------------------------------------------------------------------------------------------------------------
+
+#The Load Chat API is used to load the chat of users but not used right now
 
 class LoadChat(Resource):
     def post(self):
@@ -223,7 +230,7 @@ class LoadChat(Resource):
         """    
 
         
-
+#The Complete API is used to complete the users session and push the graph in the database
 class Complete(Resource):
     def post(self):
 

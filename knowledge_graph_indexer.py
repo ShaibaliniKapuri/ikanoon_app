@@ -9,6 +9,12 @@ import IPython
 import re
 import os
 
+
+# The Class creates the knowledge graph and the indexes from the searched text
+# The query_index function queries the indexes and returns a response based on the system prompt given
+# The persist_storage function stores the indexes in the persist_directory
+# The visualize_graph function which has been commented out can be used to visualize the graph on the frontend
+
 class KnowledgeGraphIndexer:
     def __init__(self, api_key, model_name="llama-3.1-70b-versatile", embed_model_name="thenlper/gte-large"):
         self.llm = Groq(model=model_name, api_key=api_key)

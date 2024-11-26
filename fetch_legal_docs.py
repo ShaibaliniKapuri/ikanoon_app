@@ -6,7 +6,7 @@ import re
 import shutil
 import os
 
-api_token = ""
+api_token = "xxxx"#ikanoon api key
 
 args = Namespace(
     token=api_token,
@@ -21,6 +21,11 @@ args = Namespace(
 storage = None  # Depending on your requirement
 ik_api = IKApi(args, storage)
 
+
+#------------------------------------------------------------------------------------------------------------
+
+# Function for fetching legal docs based on doc_id 
+# Not using this function in original Application
 def fetch_legal_docs():
     doc_id = 18837715  # Replace with the actual document ID you want to fetch
     try:
@@ -34,6 +39,12 @@ def fetch_legal_docs():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
+#-----------------------------------------------------------------------------------------------------------
+
+
+#Function performing keyword search using ik_api
+#writing the search contents in a text file inside a source directory
 
 def perform_search(query):
     try:
@@ -55,7 +66,10 @@ def perform_search(query):
         print(f"An error occurred during search: {e}")
 
 
+#--------------------------------------------------------------------------------------------------------------------
 
+
+#moving the files containing searched items in another directory after finishing the session with user
 
 def move_files_to_completed():
     source_dir = "content"
